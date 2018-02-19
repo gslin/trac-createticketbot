@@ -2,6 +2,7 @@
 
 import configparser
 import os
+import xmlrpc.client
 
 class TracCreateTicketBot(object):
     def __init__(self):
@@ -13,6 +14,9 @@ class TracCreateTicketBot(object):
 
         c = configparser.ConfigParser()
         c.read(f_conf)
+
+        uri = c['default']['uri']
+        s = xmlrpc.client.ServerProxy(uri)
 
 if '__main__' == __name__:
     t = TracCreateTicketBot()
