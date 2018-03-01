@@ -5,6 +5,7 @@ import datetime
 import getopt
 import os
 import sys
+import time
 import xmlrpc.client
 
 class TracCreateTicketBot(object):
@@ -35,7 +36,10 @@ class TracCreateTicketBot(object):
             elif '--description' == opt:
                 description = arg
             elif '--due_date' == opt:
-                a['due_date'] = datetime.datetime.utcnow() + datetime.timedelta(seconds=86400 * int(arg))
+                now = int(time.time())
+                now_todaystart = now - now % 86400
+                due_date = now_todaystart + 86400 * int(arg)
+                a['due_date'] = datetime.datetime.fromtimestamp(due_date, datetime.timezone.utc)
             elif '--owner' == opt:
                 a['owner'] = arg
             elif '--parents' == opt:
