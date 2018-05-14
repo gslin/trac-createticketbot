@@ -23,12 +23,13 @@ class TracCreateTicketBot(object):
         opts, args = getopt.getopt(
             sys.argv[1:],
             '',
-            ['component=', 'description=', 'due_date=', 'owner=', 'parents=', 'priority=', 'title=']
+            ['component=', 'description=', 'due_date=', 'owner=', 'parents=', 'priority=', 'timeoffset', 'title=']
         )
 
         a = {}
         title = ''
         description = ''
+        timeoffset = 0
 
         for opt, arg in opts:
             if '--component' == opt:
@@ -46,10 +47,12 @@ class TracCreateTicketBot(object):
                 a['parents'] = arg
             elif '--priority' == opt:
                 a['priority'] = arg
+            elif '--timeoffset' == opt:
+                timeoffset = 86400 * int(arg)
             elif '--title' == opt:
                 title = arg
 
-        title = time.strftime(title, time.localtime())
+        title = time.strftime(title, time.localtime(time.time() + timeoffset))
 
         id = self.s.ticket.create(title, description, a)
         print('* ticket_id = {}'.format(id))
