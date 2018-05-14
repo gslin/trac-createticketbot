@@ -47,7 +47,7 @@ class TracCreateTicketBot(object):
             elif '--priority' == opt:
                 a['priority'] = arg
             elif '--title' == opt:
-                title = arg
+                title = time.strftime(arg, time.localtime())
 
         id = self.s.ticket.create(title, description, a)
         print('* ticket_id = {}'.format(id))
