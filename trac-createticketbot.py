@@ -39,7 +39,7 @@ class TracCreateTicketBot(object):
             elif '--due_date' == opt:
                 now = int(time.time())
                 now_todaystart = now - now % 86400
-                due_date = now_todaystart + 86400 * int(arg)
+                due_date = now_todaystart + int(arg)
                 a['due_date'] = datetime.datetime.fromtimestamp(due_date, datetime.timezone.utc)
             elif '--owner' == opt:
                 a['owner'] = arg
@@ -48,7 +48,7 @@ class TracCreateTicketBot(object):
             elif '--priority' == opt:
                 a['priority'] = arg
             elif '--timeoffset' == opt:
-                timeoffset = 86400 * int(arg)
+                timeoffset = int(arg)
             elif '--title' == opt:
                 title = arg
 
