@@ -54,7 +54,7 @@ class TracCreateTicketBot(object):
 
         title = time.strftime(title, time.localtime(time.time() + title_timeoffset))
 
-        id = self.s.ticket.create(title, description, a, notify=True)
+        id = self.s.ticket.create(title, description, a, True)
         print('* ticket_id = {}'.format(id))
 
 if '__main__' == __name__:
