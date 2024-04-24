@@ -23,7 +23,7 @@ class TracCreateTicketBot(object):
         opts, args = getopt.getopt(
             sys.argv[1:],
             '',
-            ['component=', 'description=', 'due_date=', 'owner=', 'parents=', 'priority=', 'title=', 'title-timeoffset=']
+            ['component=', 'description=', 'due_date=', 'owner=', 'parents=', 'priority=', 'status=', 'title=', 'title-timeoffset=']
         )
 
         a = {}
@@ -47,6 +47,8 @@ class TracCreateTicketBot(object):
                 a['parents'] = arg
             elif '--priority' == opt:
                 a['priority'] = arg
+            elif '--status' == opt:
+                a['status'] = arg
             elif '--title' == opt:
                 title = arg
             elif '--title-timeoffset' == opt:
