@@ -27,8 +27,8 @@ class TracCreateTicketBot(object):
         )
 
         a = {}
-        title = ''
         description = ''
+        title = ''
         title_timeoffset = 0
 
         for opt, arg in opts:
