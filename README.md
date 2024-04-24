@@ -2,10 +2,10 @@
 
 ## Configuration
 
-If your trac is installed in `https://hostname.domain/trac/`, then `~/.config/trac-createticketbot/config.ini` settings should be:
+If your trac is installed in `https://example.com/trac/`, then `~/.config/trac-createticketbot/config.ini` settings should be:
 
     [default]
-    uri = https://username:password@hostname.domain/trac/xmlrpc
+    uri = https://username:password@example.com/trac/xmlrpc
 
 ## License
 
